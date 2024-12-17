@@ -5,7 +5,7 @@ import nltk
 
 from nltk.stem.snowball import SnowballStemmer
 from nltk.stem.wordnet import WordNetLemmatizer
-from nltk.corpus import wordnet, stopwords
+
 
 """
 Cleans the input string by:
@@ -38,7 +38,6 @@ def stopwords_lemmatizer(text, stopwords, testing=False):
         nltk.download('stopwords')
         nltk.download('wordnet')
 
-
     tokenized_list =  [word for word in text.split() if word.lower() not in stopwords]
 
     wordnet_lemmatizer = WordNetLemmatizer()
@@ -56,17 +55,17 @@ def stopwords_lemmatizer(text, stopwords, testing=False):
 def create_stopwords():
     stopwords = np.array(nltk.corpus.stopwords.words('english'))
     
-    other_half = np.array(open("../data/stop_words.txt", encoding="utf-8").readlines())
+    other_half = np.array([line.strip() for line in open("../data/stop_words.txt", encoding="utf-8").readlines()])
+
     stopwords = np.concatenate((stopwords, other_half), axis=None)
 
     return stopwords
 
 
-def clean_row(string): 
+def clean_row(string, stopwords): 
     if not isinstance(string, str):
         return string  # Handle non-string inputs gracefully
 
-    stopwords = create_stopwords()
     string = stopwords_lemmatizer(string, stopwords)
     string = remove_links(string) 
     string = remove_symbols(string)
@@ -76,8 +75,9 @@ def clean_row(string):
 def clean_dataframe(df):
     nltk.download('stopwords')
     nltk.download('wordnet')
-
-    df['text'] = df['text'].apply(clean_row)
+    stopwords = create_stopwords()
+    
+    df['text'] = df['text'].apply(lambda string: clean_row(string, stopwords))
     return df
 
 

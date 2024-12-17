@@ -12,7 +12,7 @@ input_file = Path("../data/FullyCleanedDataframe.csv")
 
 min_df = 0.05
 max_df = 0.2
-max_features = 500
+max_features = 200
 
 topic_count = 15
 word_count_per_group = 8

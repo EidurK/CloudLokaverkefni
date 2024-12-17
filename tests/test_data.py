@@ -21,7 +21,7 @@ class TestDataProcessing(unittest.TestCase):
         self.assertEqual(result, expected)
 
     def test_stopwords_lemmatizer(self):
-        test_text = "this wouldn't work by appending the trump"
+        test_text = "this wouldn't work BY appending the trump"
         stopwords = ['you', 'this', 'by', 'the', "wouldn't"]
         result = dta.stopwords_lemmatizer(test_text, stopwords, testing=True)
         expected = "work append trump"
@@ -29,8 +29,9 @@ class TestDataProcessing(unittest.TestCase):
 
 
     def test_clean_row(self):
-        result = dta.clean_row(self.test_row)
-        expected = 'hello need show link'
+        stopwords = []
+        result = dta.clean_row(self.test_row, stopwords)
+        expected = 'hello i need to show link'
         self.assertEqual(result, expected)
 
 if __name__ == '__main__':
