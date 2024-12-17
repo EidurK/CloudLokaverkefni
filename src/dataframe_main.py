@@ -14,10 +14,10 @@ from dataframe_functions import (
 
 #------------------------------------------------------------
 # Þarft fyrst að downloada tveimur file-um af https://figshare.com/articles/dataset/Datasets_for_QAnon_on_Reddit_research_project_/19251581
-submission_file = '' # Hashed_Q_Submissions_Raw_Combined.csv
-user_file =  '' # Hashed_allAuthorStatus.csv
+submission_file = '../data/Hashed_Q_Submissions_Raw_Combined.csv'
+user_file =  '../data/Hashed_allAuthorStatus.csv' 
 
-output_file = '' 
+output_file = '../data/PostsOfQAnon.csv' # Ekki breyta
 #------------------------------------------------------------
 
 df_submission, df_users = callfunction(read_data, "Reading files", [[submission_file,user_file],-1])
@@ -27,4 +27,4 @@ df_users = callfunction(column_filter, "Filtering user columns", [df_users, ['is
 df = callfunction(merge_dataframes, "Merging dataframes", [df_submission, df_users, ['author', 'QAuthor'], 'left'])
 df = callfunction(query_filter, "Filtering out QAnon interested", args=[df,'isUQ == 1'])
 df = callfunction(column_filter, "Filtering final columns",[df,['text','author']])
-callfunction(write_to_csv, "Writing to csv", [df, '../data/PostsOfQAnon.csv'])
+callfunction(write_to_csv, "Writing to csv", [df, output_file])

@@ -6,10 +6,9 @@ import pandas as pd
 import clean_data as cleaning
 
 # - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-
+# Ekki breyta neinu (helst)
 input_file='../data/PostsOfQAnon.csv'
-
-output_file = '../data/FullyCleanedDataframe.csv'
+output_file = '../data/FullyCleanedDataframe.csv' 
 
 # - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 

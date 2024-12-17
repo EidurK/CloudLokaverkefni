@@ -8,7 +8,7 @@ from pathlib import Path
 import pandas as pd
 
 # ------------------------------
-my_file = Path("../data/FullyCleanedDataframe.csv")
+input_file = Path("../data/FullyCleanedDataframe.csv")
 
 min_df = 0.05
 max_df = 0.2
@@ -19,10 +19,10 @@ word_count_per_group = 8
 
 
 # ------------------------------
-if not my_file.exists():
+if not input_file.exists():
     print('file not exist')
 
-df = pd.read_csv(my_file)
+df = pd.read_csv(input_file)
 df = df.dropna()
 D = df['text'].to_numpy()
 X, vocab = NMF.tfid_vectorizer(D,min_df,max_df, max_features=max_features)
