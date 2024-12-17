@@ -3,7 +3,7 @@
 1. download 
     - Hashed_Q_Submissions_Raw_Combined.csv
     - Hashed_allAuthorStatus.csv
-    from [[https://figshare.com/articles/dataset/Datasets_for_QAnon_on_Reddit_research_project_/19251581|this link]]. 
+    from [this link.](https://figshare.com/articles/dataset/Datasets_for_QAnon_on_Reddit_research_project_/19251581|this link) 
 2. Place the files in `./data/`
 3. Run `dataframe_main.py`
 4. Run `clean_main.py`
