@@ -33,3 +33,8 @@ top_words = NMF.top_n_words(H,word_count_per_group, vocab)
 
 for group in top_words:
     print(group)
+
+top_sentences = NMF.top_n_sentences(W,1,D)
+groups = []
+for i in groups:
+    print(top_sentences[i])

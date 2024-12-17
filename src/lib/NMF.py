@@ -26,3 +26,7 @@ def top_n_index(H, n):
 def top_n_words(H,n,vocab):
     indx = top_n_index(H,n)
     return [vocab[i] for i in indx]
+
+def top_n_sentences(W, n, D):
+    indx = top_n_index(W.T, n)
+    return [D[i] for i in indx]
