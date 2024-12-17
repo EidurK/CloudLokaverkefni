@@ -3,7 +3,8 @@ import os
 
 sys.path.append(os.path.abspath("./lib"))
 import pandas as pd
-import clean_data as cleaning
+import lib.clean_data as cleaning
+
 
 # - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 # Ekki breyta neinu (helst)
@@ -12,7 +13,7 @@ output_file = '../data/FullyCleanedDataframe.csv'
 
 # - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-df = pd.read_csv(input_file)
+df = pd.read_csv(input_file, encoding="utf-8")
 print(df.head(3))
 df = cleaning.clean_dataframe(df)
 print(df.head(3))

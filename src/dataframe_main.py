@@ -3,7 +3,7 @@ import os
 
 sys.path.append(os.path.abspath("./lib"))
 
-from dataframe_functions import (
+from lib.dataframe_functions import (
     callfunction, 
     read_data, 
     column_filter, 

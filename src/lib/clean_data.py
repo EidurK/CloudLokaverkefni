@@ -56,7 +56,7 @@ def stopwords_lemmatizer(text, stopwords, testing=False):
 def create_stopwords():
     stopwords = np.array(nltk.corpus.stopwords.words('english'))
     
-    other_half =np.array(open("../data/stop_words.txt").readlines())
+    other_half = np.array(open("../data/stop_words.txt", encoding="utf-8").readlines())
     stopwords = np.concatenate((stopwords, other_half), axis=None)
 
     return stopwords

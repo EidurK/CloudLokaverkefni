@@ -3,7 +3,7 @@ import os
 
 sys.path.append(os.path.abspath("./lib"))
 
-import NMF
+import lib.NMF as NMF
 from pathlib import Path
 import pandas as pd
 
@@ -22,7 +22,7 @@ word_count_per_group = 8
 if not input_file.exists():
     print('file not exist')
 
-df = pd.read_csv(input_file)
+df = pd.read_csv(input_file, encoding='utf-8')
 df = df.dropna()
 D = df['text'].to_numpy()
 X, vocab = NMF.tfid_vectorizer(D,min_df,max_df, max_features=max_features)
