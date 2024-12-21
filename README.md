@@ -8,3 +8,6 @@
 3. Run `dataframe_main.py`
 4. Run `clean_main.py`
 5. Run `main.py`
+6. When prompted for weight threshold try 0.125
+
+

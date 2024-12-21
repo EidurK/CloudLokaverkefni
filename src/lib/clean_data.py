@@ -33,11 +33,13 @@ def remove_links(text):
     return cleaned_text.strip()
 
 
-def stopwords_lemmatizer(text, stopwords, testing=False):
-    if testing:
-        nltk.download('stopwords')
-        nltk.download('wordnet')
+"""
+Removes all stopwords and lemmatizes the input string
 
+Args: str, list, bool - input string, list of stopwords.
+Returns: str - Cleaned string.
+"""
+def stopwords_lemmatizer(text, stopwords):
     tokenized_list =  [word for word in text.split() if word.lower() not in stopwords]
 
     wordnet_lemmatizer = WordNetLemmatizer()
@@ -52,6 +54,11 @@ def stopwords_lemmatizer(text, stopwords, testing=False):
         cleaned_list.append(snowball_stemmer.stem(word))
     return ' '.join(cleaned_list)
 
+"""
+Creates a list of stopwords form nltk's stopwords and the stopwords from ./data/stop_words.txt
+
+Returns: list - list of stopwords.
+"""
 def create_stopwords():
     stopwords = np.array(nltk.corpus.stopwords.words('english'))
     
@@ -62,6 +69,13 @@ def create_stopwords():
     return stopwords
 
 
+
+"""
+A pipeline used to clean text
+
+Args: str, list - a row of a dataframe containing text
+Returns: str - cleaned text
+"""
 def clean_row(string, stopwords): 
     if not isinstance(string, str):
         return string  # Handle non-string inputs gracefully
@@ -72,6 +86,13 @@ def clean_row(string, stopwords):
     
     return string
 
+
+"""
+Cleans the text column of a given dataframe.
+
+Args: dataframe with column 'text'.
+Returns: dataframe with the 'text' column cleaned.
+"""
 def clean_dataframe(df):
     nltk.download('stopwords')
     nltk.download('wordnet')
